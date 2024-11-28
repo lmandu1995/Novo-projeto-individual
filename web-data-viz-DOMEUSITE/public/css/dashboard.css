@@ -36,6 +36,15 @@ header .container {
     box-shadow: 13px 7px 18px #342518, -1px 10px 15px
 }
 
+.ola{
+    display: flex;
+        flex-direction: row;
+        color: white;
+        position: relative;
+        left: -35vh;
+        top: -14.4ch;
+        font-size: 22px;
+}
 
 .foto_logo {
     display: flex;
@@ -158,5 +167,5 @@ button:active {
 #div_mensagem {
     display: flex;
    justify-content: center;
-    color: #45a049;
+    color: black;
 }

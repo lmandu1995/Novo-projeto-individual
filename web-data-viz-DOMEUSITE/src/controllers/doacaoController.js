@@ -58,7 +58,21 @@ function cadastrar(req, res) {
 function listar(req, res) {
   doacaoModel.listar().then((resultado) => {
     if (resultado.length > 0) {
-      res.status(200).json(resultado); // Sucesso: retorna a lista de jogos
+      res.status(200).json(resultado); // Sucesso: retorna cones doados
+    } else {
+      res.status(204).json([]); // Sem conteúdo
+    }
+  }).catch((erro) => {
+    console.error("Houve um erro ao buscar os jogos: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage); // Erro interno
+  });
+}
+
+function listarKPI(req, res) {
+  const { fkCadastro } = req.params;
+  doacaoModel.listarKPI(fkCadastro).then((resultado) => {
+    if (resultado.length > 0) {
+      res.status(200).json(resultado); // Sucesso: retorna quantidade de cones doados
     } else {
       res.status(204).json([]); // Sem conteúdo
     }
@@ -71,5 +85,6 @@ function listar(req, res) {
 module.exports = {
   buscarProduto,
   cadastrar,
-  listar
+  listar,
+  listarKPI
 }

@@ -28,7 +28,7 @@ header .container{
 }
 
 .foto_logo {
-    width: 20vh;
+    width: 10vh;
     display: flex;
     height: 3vw;
     position: relative;
@@ -63,6 +63,8 @@ header .container{
     background: #ffffff;
     box-shadow: inset 20px 20px 60px #dacec4, inset -20px -20px 60px #bbb3ad;
 }
+
+
 
  
 .botao_redirecionar { 

@@ -1,7 +1,5 @@
 var database = require("../database/config");
 
-
-
 function buscarProduto() {
   var instrucaoSql = `Select produto, sabor from doacao`;
 
@@ -9,13 +7,6 @@ function buscarProduto() {
   return database.executar(instrucaoSql);
 }
 
-function atualizarSabor(produto, sabor) {
-
-  var instrucaoSql = `update doacao set  ${empresaId}`;
-
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
 
 function cadastrar(qtd_produto, produto, tipo, sabor, ong, fkCadastro) {
   
@@ -35,10 +26,17 @@ function listar() {
   return database.executar(instrucaoSql);
 }
 
+function listarKPI() {
+  var instrucaoSql = `select COUNT(fkCadastro) as quantidade_doada from doacao;`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
   buscarProduto,
-  atualizarSabor,
   cadastrar,
-  listar
+  listar,
+  listarKPI
 }

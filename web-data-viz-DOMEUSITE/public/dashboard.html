@@ -12,17 +12,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap" rel="stylesheet">
 </head>
 
-<body onload="listarDoacoes()">
+<body onload="puxar_usuario()">
 
 
   <header id="header">
     <div class="container">
       <div class="conteudo">
         <a href="index.html"><img src="./assets/Fotos/saida.png" class="foto_saida" alt=""></a>
-        <span class="nome_site">Cones Mandu</span>
+        <span class="nome_site">Doces Mandu</span>
         <button onclick="abrir_dashboard()" class="botao2">Dashboard</button>
         <button onclick="abrir_doacao()" class="botao2">Doar</button>
         <div class="foto_logo"><img src="./assets/Fotos/foto de cones.png" alt=""></div>
+        <div class="ola">Olá, <b id="b_usuario"></b> </div>
       </div>
     </div>
   </header>
@@ -83,10 +84,14 @@
     </div>
   </div>
   <div id="div_mensagem"></div>
+  
+ 
 
-  <div id="aparecer_dashboard">
-    <canvas id="grafico" width="400" height="200"></canvas>
+  <div id="block_geral">
+  <div id="aparecer_dashboard" style="display: block;">
+    <canvas id="grafico" width="800" height="200"></canvas>
   </div>
+</div>
 
   <div class="footer">
     <div class="container">
@@ -94,6 +99,7 @@
       <span class="version">v1.0.0</span>
     </div>
   </div>
+  
 
 </body>
 
@@ -134,10 +140,11 @@
 
         if (resposta.ok) {
 
+          
 
-          div_mensagem.innerHTML = "Doação realizada"
+          div_mensagem.innerHTML = '<b style="display: flex; justify-content: center; color: #45a049;">Doação realizada</b>'
           setTimeout(() => {
-            div_mensagem.innerHTML = "Faça outra doação"
+            div_mensagem.innerHTML = '<b style="display: flex; justify-content: center; color: #45a049;">Faça outra doação</b>'
           }, "2000");
 
 
@@ -152,7 +159,7 @@
 
     return false;
 
-
+   
   }
 
   function listarDoacoes() {
@@ -217,7 +224,7 @@
             },
             title: {
               display: true,
-              text: 'Notas de usuarios',
+              text: 'Quantidade de cones doados',
               color: 'black',
               font: {
                 size: 15
@@ -233,14 +240,61 @@
 
 
   function abrir_dashboard() {
+    listarDoacoes();
+    carregarEstatisticas();
     cadastro.style.display = 'none';
     aparecer_dashboard.style.display = 'block';
-
+    // aparecer_KPI.style.display = 'none';
+    // block_geral.style.display = 'none';
 
   }
 
   function abrir_doacao() {
     cadastro.style.display = 'block';
     aparecer_dashboard.style.display = 'none';
+    aparecer_KPI.style.display = 'none';
+    block_geral.style.display = 'none';
+    div_mensagem.innerHTML = ''
+
+    
   }
+
+  function puxar_usuario(){
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO
+  }
+
+  function carregarEstatisticas() {
+        const fkCadastro = sessionStorage.ID_USUARIO;
+        
+        fetch(`/doacao/listarKPI`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+            .then(resposta => {
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    throw new Error(`Erro ao buscar estatísticas: ${resposta.status}`);
+                }
+            })
+            .then(estatisticas => {
+                console.log("Estatísticas recebidas:", estatisticas);
+
+                const estatistica = estatisticas[0]
+
+                div_mensagem.innerHTML = `
+                <div class="tag-stats">
+                    QUANTAS VEZES DOOU
+                    <p>${estatistica.quantidade_doada}</p>
+                </div class="tag-stats">`;
+
+                
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar estatísticas:", erro);
+            });
+    }
+
 </script>
