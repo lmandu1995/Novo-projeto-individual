@@ -69,8 +69,8 @@ function listar(req, res) {
 }
 
 function listarKPI(req, res) {
-  const { fkCadastro } = req.params;
-  doacaoModel.listarKPI(fkCadastro).then((resultado) => {
+
+  doacaoModel.listarKPI().then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado); // Sucesso: retorna quantidade de cones doados
     } else {

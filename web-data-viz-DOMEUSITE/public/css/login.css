@@ -11,7 +11,7 @@ body{
 header{
     padding: 30px;
     margin: 20px;
-    /* background-color: rgb(20, 12, 136); */
+    
     width: 190vh;
     margin-top: -3vb;
     
@@ -86,7 +86,6 @@ header .container{
     .cadastro .container {
     padding: 20px; 
     border-radius: 20px;
-    /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);  */
     width: 300px; 
     margin-top: 40px;
     }

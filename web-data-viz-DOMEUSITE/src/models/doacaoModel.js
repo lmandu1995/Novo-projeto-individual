@@ -33,8 +33,8 @@ function listarKPI() {
   return database.executar(instrucaoSql);
 }
 
-function listarKPI_individual() {
-  var instrucaoSql = `select COUNT(fkCadastro) as quantidade_doada, sum(qtd_produto) as quantidade_total_doada from doacao;`;
+function listarKPI_individual(fkCadastro) {
+  var instrucaoSql = `select COUNT(fkCadastro) as quantidade_doada, sum(qtd_produto) as quantidade_total_doada from doacao where fkCadastro = ${fkCadastro} group by fkCadastro ;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

@@ -9,7 +9,6 @@ body{
 header{
     padding: 30px;
     margin: 20px;
-    /* background-color: rgb(20, 12, 136); */
     width: 190vh;
     margin-top: -3vb;
     
@@ -100,7 +99,6 @@ button:active {
 
     .centro .container{
         height:100px;
-        /* background-color: red; */
         
     }
     
@@ -163,8 +161,6 @@ button:active {
 
 .footer{
     display: flex;
-    /* flex-direction: row; */
-    
     background-color: #2a2081;
     margin-top: 50vh;
     width: 196vh;

@@ -74,15 +74,15 @@ header .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Centraliza horizontalmente */
+    align-items: center; 
     position: relative;
-    width: 100%; /* Ajusta para 100% para melhor responsividade */
+    width: 100%; 
     max-width: 500px; /* Define uma largura máxima para o campo */
-    margin: auto; /* Centraliza verticalmente */
-    margin-bottom: 15px; /* Espaçamento inferior */
-    padding: 20px; /* Adiciona padding para melhor espaçamento interno */
-    background: linear-gradient(135deg, #3f1a0b, #F5DEB3); /* Gradiente de marrom e bege */
-    border-radius: 10px; /* Bordas arredondadas */
+    margin: auto; 
+    margin-bottom: 15px; 
+    padding: 20px; 
+    background: linear-gradient(135deg, #3f1a0b, #F5DEB3); 
+    border-radius: 10px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
 }
 
@@ -91,7 +91,7 @@ header .container {
     margin-bottom: 5px;
     color: white;
     font-size: 23px;
-    text-align: center; /* Centraliza o texto dentro do span */
+    text-align: center; 
 }
 
 
@@ -128,8 +128,8 @@ box-shadow: inset 20px 20px 60px #301f11,
 }
 
 button:active { 
-    background-color: #3e8e41; /* Cor de fundo ao clicar */
-     box-shadow: 0 5px #666; /* Sombra ao clicar */ 
+    background-color: #3e8e41; 
+     box-shadow: 0 5px #666; 
      transform: translateY(4px); /* Efeito de pressão ao clicar */
 }
 
@@ -157,8 +157,6 @@ button:active {
 
 .footer {
     display: flex;
-    /* flex-direction: row; */
-
     background-color: #2a2081;
     margin-top: 20vh;
     width: 196vh;
