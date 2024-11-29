@@ -182,11 +182,12 @@ button:active {
     padding: 20px;
     text-align: center;
     border-radius: 15px;
+    font-size: 13px;
 }
 
 #div_kpi1 {
     width: 20vh;
-    height: 10vh;
+    height: 15vh;
     background-color: #301f11;
     display: flex;
    justify-content: center;
@@ -196,12 +197,14 @@ button:active {
 
    
 }
-.kpi h3{
+
+h3{
     border-bottom: 2px solid white;
+    font-size: 30px;
 }
 #div_kpi2 {
     width: 20vh;
-    height: 10vh;
+    height: 15vh;
     background-color: #301f11;
     display: flex;
     flex-direction: row;
@@ -214,7 +217,7 @@ button:active {
 
 #div_kpi3 {
     width: 20vh;
-    height: 10vh;
+    height: 15vh;
     background-color: #301f11;
     display: flex;
     flex-direction: row;
@@ -226,7 +229,7 @@ button:active {
 
 #div_kpi4 {
     width: 20vh;
-    height: 10vh;
+    height: 15vh;
     background-color: #301f11;
     display: flex;
     flex-direction: row;
