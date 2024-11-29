@@ -27,7 +27,14 @@ function listar() {
 }
 
 function listarKPI() {
-  var instrucaoSql = `select COUNT(fkCadastro) as quantidade_doada from doacao;`;
+  var instrucaoSql = `select COUNT(fkCadastro) as quantidade_doada, sum(qtd_produto) as quantidade_total_doada from doacao;`;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function listarKPI_individual() {
+  var instrucaoSql = `select COUNT(fkCadastro) as quantidade_doada, sum(qtd_produto) as quantidade_total_doada from doacao;`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -38,5 +45,6 @@ module.exports = {
   buscarProduto,
   cadastrar,
   listar,
-  listarKPI
+  listarKPI,
+  listarKPI_individual
 }

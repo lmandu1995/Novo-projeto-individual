@@ -22,4 +22,9 @@ router.get("/listarKPI", function (req, res) {
   doacaoController.listarKPI(req, res);
 });
 
+router.get("/listarKPI_individual", function (req, res) {
+  doacaoController.listarKPI(req, res);
+});
+
+
 module.exports = router;

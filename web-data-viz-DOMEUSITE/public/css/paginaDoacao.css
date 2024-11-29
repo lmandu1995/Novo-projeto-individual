@@ -66,20 +66,24 @@ header .container {
     width: 200px;
 }
 
+.container_campo{
+    margin-top: 70px;
+    margin-bottom: -40px;
+}
 .campo {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Centraliza horizontalmente */
     position: relative;
-    width: 100%; 
-    max-width: 500px; 
-    margin: auto; 
-    margin-bottom: 15px; 
-    padding: 20px; 
-    background: linear-gradient(135deg, #3f1a0b, #F5DEB3); 
-    border-radius: 10px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    width: 100%; /* Ajusta para 100% para melhor responsividade */
+    max-width: 500px; /* Define uma largura máxima para o campo */
+    margin: auto; /* Centraliza verticalmente */
+    margin-bottom: 15px; /* Espaçamento inferior */
+    padding: 20px; /* Adiciona padding para melhor espaçamento interno */
+    background: linear-gradient(135deg, #3f1a0b, #F5DEB3); /* Gradiente de marrom e bege */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
 }
 
 .campo span {
@@ -156,7 +160,7 @@ button:active {
     /* flex-direction: row; */
 
     background-color: #2a2081;
-    margin-top: 10vh;
+    margin-top: 20vh;
     width: 196vh;
     margin-left: 3vh;
     color: #ffffff;
@@ -164,63 +168,3 @@ button:active {
 
 }
 
-
-.tamanho_grafico{
-    width: 190vh;
-    margin-left: 50px;
-}
-.container_kpi{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 120px;
-    margin-top: 70px;
-   
-}
-
-.kpi{
-    padding: 20px;
-    text-align: center;
-    border-radius: 15px;
-}
-
-#div_kpi1 {
-    width: 20vh;
-    height: 10vh;
-    background-color: #301f11;
-    display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: row;
-   position: relative;
-
-   
-}
-.kpi h3{
-    border-bottom: 2px solid white;
-}
-#div_kpi2 {
-    width: 20vh;
-    height: 10vh;
-    background-color: #301f11;
-    display: flex;
-    flex-direction: row;
-   justify-content: center;
-   align-items: center;
-   position: relative;
-  
- 
-}
-
-#div_kpi3 {
-    width: 20vh;
-    height: 10vh;
-    background-color: #301f11;
-    display: flex;
-    flex-direction: row;
-   justify-content: center;
-   align-items: center;
-   position: relative;
-  
- 
-}

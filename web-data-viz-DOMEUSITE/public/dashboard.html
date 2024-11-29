@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
   <meta charset="UTF-8">
@@ -12,7 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap" rel="stylesheet">
 </head>
 
-<body onload="puxar_usuario()">
+<body onload="puxar_usuario(), renderizarGrafico(), listarDoacoes(),
+carregarEstatisticas(), abrir_dashboard()">
+
 
 
   <header id="header">
@@ -20,7 +22,7 @@
       <div class="conteudo">
         <a href="index.html"><img src="./assets/Fotos/saida.png" class="foto_saida" alt=""></a>
         <span class="nome_site">Doces Mandu</span>
-        <button onclick="abrir_dashboard()" class="botao2">Dashboard</button>
+        <!-- <button onclick="abrir_dashboard()" class="botao2">Dashboard</button> -->
         <button onclick="abrir_doacao()" class="botao2">Doar</button>
         <div class="foto_logo"><img src="./assets/Fotos/foto de cones.png" alt=""></div>
         <div class="ola">Olá, <b id="b_usuario"></b> </div>
@@ -28,68 +30,15 @@
     </div>
   </header>
 
-  <div class="cadastro" id="cadastro">
-    <div class="container">
-      <div class="campo">
-
-        <span>Quantos produtos deseja doar:</span>
-        <select name="" id="select_quantidade">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
-
-        <span>Qual produto deseja doar:</span>
-        <select name="" id="select_produto">
-          <option value="cone">Cone</option>
-          <option value="barra">Chocolate</option>
-        </select>
-
-        <span>Qual tipo de chocolate:</span>
-        <select name="" id="select_cor">
-          <option value="branco">Branco</option>
-          <option value="ao_leite">Ao leite</option>
-          <option value="meio_amargo">Meio Amargo</option>
-        </select>
-
-        <span>Qual sabor deseja doar:</span>
-        <select name="" id="select_sabor">
-          <option>Maracujá</option>
-          <option>Limão</option>
-          <option>Ferrero Rocher</option>
-          <option>Surpresa de uva</option>
-          <option>Dois Amores</option>
-          <option>Ninho com Nutella</option>
-          <option>Chocolate com cereja</option>
-          <option>Oreo</option>
-          <option>Pistache</option>
-          <option>Chokito</option>
-        </select>
-
-        <span>Para qual ONG:</span>
-        <select name="" id="select_ong">
-          <option>Projeto Alfa</option>
-          <option>Anjos da Leste</option>
-          <option>Casa Esperança</option>
-        </select><br>
-
-        <button onclick="doar()" class="botao">Doar</button>
-      </div>
-    </div>
-  </div>
-  <div id="div_mensagem"></div>
-  
- 
+  <div class="container_kpi">
+  <div id="div_kpi1" class="kpi"></div>
+  <div id="div_kpi2" class="kpi"></div>
+  <div id="div_kpi3" class="kpi"></div>
+ </div>
 
   <div id="block_geral">
-  <div id="aparecer_dashboard" style="display: block;">
-    <canvas id="grafico" width="800" height="200"></canvas>
+  <div id="aparecer_dashboard" class="tamanho_grafico">
+    <canvas id="grafico" width="1000" height="180"></canvas>
   </div>
 </div>
 
@@ -105,62 +54,8 @@
 
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
+<script> document.addEventListener("DOMContentLoaded", function () { puxar_usuario(); listarDoacoes(); carregarEstatisticas(); abrir_dashboard(); });
 
-  function doar() {
-    var quantidade = select_quantidade.value
-    var produto = select_produto.value
-    var cor = select_cor.value
-    var sabor = select_sabor.value
-    var ong = select_ong.value
-    var fkCadastro = sessionStorage.ID_USUARIO
-
-    console.log(fkCadastro)
-
-    // Enviando o valor da nova input
-    fetch("/doacao/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        quantidadeServer: quantidade,
-        produtoServer: produto,
-        corServer: cor,
-        saborServer: sabor,
-        ongServer: ong,
-        fkCadastroServer: fkCadastro
-
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-
-          
-
-          div_mensagem.innerHTML = '<b style="display: flex; justify-content: center; color: #45a049;">Doação realizada</b>'
-          setTimeout(() => {
-            div_mensagem.innerHTML = '<b style="display: flex; justify-content: center; color: #45a049;">Faça outra doação</b>'
-          }, "2000");
-
-
-        } else {
-          throw "Houve um erro ao tentar realizar a doação!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-
-      });
-
-    return false;
-
-   
-  }
 
   function listarDoacoes() {
 
@@ -242,19 +137,13 @@
   function abrir_dashboard() {
     listarDoacoes();
     carregarEstatisticas();
-    cadastro.style.display = 'none';
-    aparecer_dashboard.style.display = 'block';
-    // aparecer_KPI.style.display = 'none';
-    // block_geral.style.display = 'none';
+   
 
   }
 
   function abrir_doacao() {
-    cadastro.style.display = 'block';
-    aparecer_dashboard.style.display = 'none';
-    aparecer_KPI.style.display = 'none';
-    block_geral.style.display = 'none';
-    div_mensagem.innerHTML = ''
+   
+    window.location.href = "./paginaDoacao.html";
 
     
   }
@@ -284,10 +173,16 @@
 
                 const estatistica = estatisticas[0]
 
-                div_mensagem.innerHTML = `
+                div_kpi1.innerHTML = `
                 <div class="tag-stats">
-                    QUANTAS VEZES DOOU
-                    <p>${estatistica.quantidade_doada}</p>
+                    QUANTAS DOAÇÕES JÁ FORAM REALIZADAS
+                    <b><p><h3>${estatistica.quantidade_doada}</b></p></h3>
+                </div class="tag-stats">`
+
+                div_kpi2.innerHTML = `
+                <div class="tag-stats">
+                    QUANTIDADE DE CONES JÁ DOADOS
+                    <b><p><h3>${estatistica.quantidade_total_doada}</b></p></h3>
                 </div class="tag-stats">`;
 
                 

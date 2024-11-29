@@ -82,9 +82,24 @@ function listarKPI(req, res) {
   });
 }
 
+function listarKPI_individual(req, res) {
+  const { fkCadastro } = req.params;
+  doacaoModel.listarKPI_individual(fkCadastro).then((resultado) => {
+    if (resultado.length > 0) {
+      res.status(200).json(resultado); // Sucesso: retorna quantidade de cones doados
+    } else {
+      res.status(204).json([]); // Sem conteúdo
+    }
+  }).catch((erro) => {
+    console.error("Houve um erro ao buscar os jogos: ", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage); // Erro interno
+  });
+}
+
 module.exports = {
   buscarProduto,
   cadastrar,
   listar,
-  listarKPI
+  listarKPI,
+  listarKPI_individual
 }

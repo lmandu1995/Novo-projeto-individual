@@ -111,7 +111,7 @@
       senha == '' ||
       confirmacaoSenha == ''
     ) {
-      mensagem = "Preencha todos os campos *"
+      mensagem = `<b style="color: red;" >Preencha todos os campos *</b> <br>`
     } else if (mensagem == '') {
 
       var nome_sem_espacos = nome.replaceAll(' ', '');
@@ -212,6 +212,7 @@
 
 
         } else {
+          div_msg.innerHTML = mensagem
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
